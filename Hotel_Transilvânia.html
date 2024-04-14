@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Transilvânia</title>
+    <script>
+        alert("Bem vindo ao Hotel Transilvânia");
+
+        nome = prompt("Informe seu nome");
+
+        senha = parseInt(prompt("Insira a senha do sistema"));
+
+        function inicio() {
+            if (senha == 2678) {
+                alert("Bem vindo ao Hotel Transilvânia, " + nome + "! É um imenso prazer ter você por aqui.");
+                menu();
+            }
+            else {
+                senha = prompt("Senha incorreta. Tente novamente.")
+            }
+        }
+
+        function menu() {
+            escolha = parseInt(prompt("O que você deseja fazer? 1)Sair / 2) Valor da diária / 3) Cadastrar hóspede / 4) Reserva de quarto / 5) Organizar evento"));
+
+            switch (escolha) {
+                case 1:
+                    sair();
+                case 2:
+                    verificar_valor_diaria();
+                case 3:
+                    menu2();
+                case 4: 
+                    reserva_quarto();
+                case 5: 
+                    evento();
+            }
+        }
+
+        function verificar_valor_diaria() {
+            diaria = parseInt(prompt("Qual o valor da diária?"));
+            if (diaria <= 0) {
+                alert("Valor inválido, " + nome);
+                reserva_quartos();
+            }
+
+            dias = prompt("Quantas diárias serão necessárias?");
+
+            if (0 < dias >= 30) {
+                dias = prompt("Insira uma quantidade válida");
+            }
+
+            valor = diaria * dias
+            alert("O valor de " + dias + " dias de hospedagem é de R$" + valor)
+
+            menu();
+        }
+
+
+        function menu2(){
+            selecione = prompt("Selecione uma opção: 1.Cadastrar - 2.Pesquisar - 3.Sair ")
+
+            switch(selecione){
+                case 1:
+                    cadastrar_hospede();
+                case 2:
+                    pesquisar_hospede();
+                case 3:
+                    menu();
+            }
+
+        }
+
+        function cadastrar_hospede() {
+                nome_hospede = prompt("Qual o nome do hóspede?");
+
+                if (nome_hospede == "Pare" || nome_hospede == "pare") {
+                    menu();
+                }
+
+                idade_hospede = parseInt(prompt("Qual a idade do hóspede?"));
+
+                if (idade_hospede < 6) {
+                    alert(nome_hospede + " possui gratuidade")
+                }
+                else if (idade_hospede > 60) {
+                    alert(nome_hospede + " possui meia gratuidade")
+                }
+                else (
+                    alert("Paga valor inteiro")
+                )
+                cadastrar_hospede();
+
+            }
+
+        function pesquisar_hospede(){
+
+            }
+
+
+        function reserva_quarto() {
+                quarto = parseInt(prompt("Qual o quarto para reserva (1-20)?"));//Falta validar ocupação de quartos
+                if (0 >= quarto > 20) {
+                    quarto = prompt("Insira um quarto existente")
+                }
+                else {
+                    alert("Quarto livre")
+                }
+
+                confirmacao = prompt(nome + ", você confirma a hospedagem para " + nome_hospede + ", por 10 dias, para o quarto " + quarto + ", por R$" + valor + ".0? S/N")
+
+                if (confirmacao == "Sim") {
+                    alert(nome + ", reserva efetuada com sucesso para " + nome_hospede + ".")
+                }
+                else if (confirmacao == "Não") {
+                    alert("Hospedagem cancelada")
+                }
+                else {
+                    alert("Essa resposta é inválida")
+                }
+                menu();
+
+            }
+        
+        function evento(){
+            convidados = parseInt(prompt("Qual o número de convidados para o seu evento?"))
+            
+            if( 0>convidaos || convidados>350){
+                alert("Quantidade de convidados superior a capacidade máxima do espaço")
+            }
+            else if(convidados < 220){
+                alert("Use o auditório Laranja")
+            }
+            else{
+                alert("Use o auditório Colorado")
+            }
+
+            function agenda(){
+            alert("Agora vamos ver a agenda do evento")
+            alert("Parte 2: agenda - O hotel oferece reserva de seu auditório caso o contratante necessite. O auditório está disponível para reservas de segunda a sexta das 7hs às 23hs; sábados apenas das 7hs às 15hs")
+
+            dia_da_semana = prompt("Qual é o dia do seu evento? (dia da semana)")
+            hora = parseInt(prompt("Qual o horário do evento?"))
+            nome_empresa = prompt("Qual é o nome da empresa?")
+            alert("Auditório reservado para " + nome_empresa + "." + dia_da_semana + " às " + hora + "hs")
+            }
+       
+        }
+
+
+        function sair() {
+            alert("Muito obrigado e até logo, " + nome);
+        }
+
+
+        inicio();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
